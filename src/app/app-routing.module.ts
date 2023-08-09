@@ -9,6 +9,10 @@ const routes: Routes = [
     loadChildren: () => import('src/app/modules/home-page/home-page.module').then((m) => m.HomePageModule)
   },
   {
+    path: ERoutes.REPOS,
+    loadChildren: () => import('src/app/modules/repos-page/repos-page.module').then((m) => m.ReposPageModule)
+  },
+  {
     path: ERoutes.OTHER,
     redirectTo: ERoutes.EMPTY
   }
