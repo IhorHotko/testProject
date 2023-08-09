@@ -1,5 +1,5 @@
 export enum ERoutes {
     EMPTY = '',
-    REPOS = 'repos',
+    REPOS = 'repos/:login',
     OTHER = '**'
 }
