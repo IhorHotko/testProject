@@ -3,6 +3,8 @@ import { HttpClient, HttpParams} from  '@angular/common/http';
 
 import { ProjectConfig } from '../config/project-config';
 import { EApi } from '../enums/api.enum';
+import { Observable } from 'rxjs';
+import { IGithubRepo, IGithubUser, IGithubUsersSearch } from '../interfaces/github-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +14,16 @@ export class GithubApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getUsers(): void {
-    this.httpClient.get(`${this.apiUrl}/${EApi.USERS}`).subscribe(console.log)
+  getUsers(): Observable<IGithubUser[]> {
+    return this.httpClient.get<IGithubUser[]>(`${this.apiUrl}/${EApi.USERS}`);
   }
 
-  searchUsers(searchStr: string): void {
+  searchUsers(searchStr: string): Observable<IGithubUsersSearch> {
     const params = new HttpParams().set('q', searchStr);
-    this.httpClient.get(`${this.apiUrl}/${EApi.USER_SEARCH}`, {params}).subscribe(console.log)
+    return this.httpClient.get<IGithubUsersSearch>(`${this.apiUrl}/${EApi.USER_SEARCH}`, {params});
   }
 
-  getUserRepos(login: string): void {
-    this.httpClient.get(`${this.apiUrl}/${EApi.USERS}/${login}/${EApi.REPOS}`).subscribe(console.log)
+  getUserRepos(login: string): Observable<IGithubRepo[]> {
+    return this.httpClient.get<IGithubRepo[]>(`${this.apiUrl}/${EApi.USERS}/${login}/${EApi.REPOS}`);
   }
 }

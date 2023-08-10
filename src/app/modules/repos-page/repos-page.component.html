@@ -1,1 +1,50 @@
-<p>repos-page works!</p>
+<div class="container">
+    <button type="button" class="btn btn-outline-secondary">
+        <a [routerLink]="[eRoutes.EMPTY]">Go Back</a>
+    </button>
+    <div class="card border-info mb-3" 
+            style="max-width: 18rem;" 
+            (click)="selectRepo(rep)" *ngFor="let rep of repos" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        <div class="card-header">{{rep.name}}</div>
+        <div class="card-body">
+            <p class="card-text">
+                {{rep.description}}
+            </p>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{selectedRepo.name}}</h1>
+                </div>
+                <div class="modal-body modal-header">
+                    {{selectedRepo.description}}
+                </div>
+                <div class="modal-body modal-header">
+                    {{selectedRepo.language}}
+                </div>
+                <div class="modal-body modal-header" >
+                    has issues:
+                    <i 
+                        class="bi" 
+                        [class.bi-check-circle-fill]="selectedRepo.hasIssues" 
+                        [class.bi-x-circle-fill]="!selectedRepo.hasIssues">
+                    </i>
+                </div>
+                <div class="modal-body modal-header">
+                    <p>
+                        <a [href]="selectedRepo.htmlUrl"
+                            class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">
+                            {{selectedRepo.htmlUrl}}
+                        </a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
