@@ -1,7 +1,38 @@
+.border-info {
+    width: 466px;
+    padding: 0;
+}
+
+.border-info:hover {
+    box-shadow: 4px 4px 4px;
+    transition: 1.08s;
+}
+.link-back {
+    text-decoration-line: none;
+    text-decoration-color: none;
+}
+
+.strong-title {
+    font-size: 30px;
+    font-weight: 500;
+}
+
 .container {
     padding: 30px 0;
 }
 
-.btn {
-    margin-bottom: 20px;
+.repo-box {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+    height: 437px;
+    width: 90%;
+    margin: 20px 0;
+    padding: 10px 27px;
+    border-radius: 8px;
+    border: 1px solid var(--bs-border-color);
+    box-shadow: 2px 2px 2px;
+    -ms-overflow-style: none;
+    scrollbar-width: none
+   
 }

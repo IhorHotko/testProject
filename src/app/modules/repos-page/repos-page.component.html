@@ -1,16 +1,16 @@
 <div class="container">
     <button type="button" class="btn btn-outline-secondary">
-        <a [routerLink]="[eRoutes.EMPTY]">Go Back</a>
+        <a class="link-back" [routerLink]="[eRoutes.EMPTY]">Go Back</a>
     </button>
-    <div class="card border-info mb-3" 
-            style="max-width: 18rem;" 
-            (click)="selectRepo(rep)" *ngFor="let rep of repos" data-bs-toggle="modal"
-        data-bs-target="#exampleModal">
-        <div class="card-header">{{rep.name}}</div>
-        <div class="card-body">
-            <p class="card-text">
-                {{rep.description}}
-            </p>
+    <div class="repo-box row row-cols-1 row-cols-md-2 g-4">
+        <div class="card border-info mb-3" (click)="selectRepo(rep)" *ngFor="let rep of repos" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
+            <div class="card-header"><h1 style="font-size: 1.5rem;">{{rep.name}}</h1></div>
+            <div class="card-body">
+                <p class="card-text">
+                    {{rep.description}}
+                </p>
+            </div>
         </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -25,11 +25,9 @@
                 <div class="modal-body modal-header">
                     {{selectedRepo.language}}
                 </div>
-                <div class="modal-body modal-header" >
+                <div class="modal-body modal-header" style="display: block;">
                     has issues:
-                    <i 
-                        class="bi" 
-                        [class.bi-check-circle-fill]="selectedRepo.hasIssues" 
+                    <i class="bi" [class.bi-check-circle-fill]="selectedRepo.hasIssues"
                         [class.bi-x-circle-fill]="!selectedRepo.hasIssues">
                     </i>
                 </div>
